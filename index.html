@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Alfano Cars | Supercar & Luxury Automotive</title>
+    <title>Alfano Cars | Vendita e Noleggio Auto Pompei</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,6 @@
             --text-main: #FFFFFF;
             --text-muted: #A1A1AA;
             --border-glass: rgba(255, 255, 255, 0.12);
-            --accent-glow: rgba(255, 255, 255, 0.15);
             --radius-lg: 24px;
             --radius-md: 16px;
         }
@@ -59,19 +58,60 @@
             padding: 0 20px;
         }
 
-        /* HEADER & NAVBAR */
+        /* TOPBAR CONTATTI RAPIDI */
+        .top-bar {
+            background: #000;
+            border-bottom: 1px solid var(--border-glass);
+            font-size: 0.85rem;
+            padding: 10px 0;
+            color: var(--text-muted);
+        }
+
+        .top-bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .top-contacts {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-contacts a {
+            color: #FFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .top-contacts a:hover {
+            opacity: 0.7;
+        }
+
+        .top-hours {
+            font-size: 0.8rem;
+        }
+
+        /* NAVBAR PRINCIPALE */
         nav {
-            position: fixed;
+            position: sticky;
             top: 0;
             left: 0;
             right: 0;
             width: 100%;
-            background: rgba(5, 5, 7, 0.88);
+            background: rgba(5, 5, 7, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-glass);
-            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -115,29 +155,28 @@
             opacity: 0.7;
         }
 
-        .btn-cta {
-            background: #FFFFFF;
-            color: #000000;
+        .btn-whatsapp-top {
+            background: #25D366;
+            color: #FFF;
             font-weight: 700;
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: 50px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
-            white-space: nowrap;
         }
 
-        .btn-cta:hover {
-            background: #E4E4E7;
+        .btn-whatsapp-top:hover {
+            opacity: 0.9;
             transform: translateY(-2px);
         }
 
         /* HERO SECTION */
         header.hero {
-            padding: 150px 0 90px;
+            padding: 140px 0 90px;
             position: relative;
             text-align: center;
             background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08) 0%, rgba(5, 5, 7, 1) 75%);
@@ -189,11 +228,30 @@
             flex-wrap: wrap;
         }
 
+        .btn-cta {
+            background: #FFFFFF;
+            color: #000000;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-cta:hover {
+            background: #E4E4E7;
+            transform: translateY(-2px);
+        }
+
         .btn-secondary {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
             color: #FFF;
-            padding: 12px 26px;
+            padding: 12px 28px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -207,40 +265,9 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
-        /* STATS BAR */
-        .stats-bar {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 24px;
-            border-radius: var(--radius-lg);
-            backdrop-filter: blur(16px);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            font-family: 'Syne', sans-serif;
-            color: #FFF;
-        }
-
-        .stat-label {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         /* SEZIONI GENERALI */
         section {
-            padding: 80px 0;
+            padding: 90px 0;
             width: 100%;
             overflow: hidden;
         }
@@ -262,12 +289,39 @@
         }
 
         .section-title {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             color: #FFF;
             line-height: 1.2;
         }
 
-        /* SHOWROOM AUTO GRID */
+        /* CHI SIAMO */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-card-img {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            height: 340px;
+        }
+
+        .about-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SHOWROOM GALLERY GRID */
         .showroom-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -292,7 +346,7 @@
 
         .car-img-wrapper {
             position: relative;
-            height: 220px;
+            height: 230px;
             width: 100%;
             overflow: hidden;
         }
@@ -362,9 +416,9 @@
         }
 
         .btn-whatsapp-sm {
-            background: rgba(255, 255, 255, 0.08);
-            color: #FFFFFF;
-            border: 1px solid var(--border-glass);
+            background: rgba(37, 211, 102, 0.15);
+            color: #25D366;
+            border: 1px solid rgba(37, 211, 102, 0.3);
             padding: 8px 16px;
             border-radius: 50px;
             text-decoration: none;
@@ -377,8 +431,8 @@
         }
 
         .btn-whatsapp-sm:hover {
-            background: #FFFFFF;
-            color: #000000;
+            background: #25D366;
+            color: #000;
         }
 
         /* SERVIZI CARDS */
@@ -393,7 +447,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
-            padding: 30px;
+            padding: 32px;
             transition: all 0.4s ease;
         }
 
@@ -422,7 +476,7 @@
             font-size: 0.9rem;
         }
 
-        /* DOVE SIAMO & CONTATTI INFO SECTION */
+        /* DOVE SIAMO & ORARI */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -559,23 +613,33 @@
             font-weight: 600;
         }
 
-        /* OPTIMIZATION SPECIAL PER MOBILE */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            header.hero { padding: 120px 0 60px; }
+            header.hero { padding: 100px 0 60px; }
             .hero-title { font-size: 2.3rem; }
             .hero-subtitle { font-size: 1rem; }
             .nav-links { display: none; }
             .section-title { font-size: 1.9rem; }
-            .showroom-grid, .services-grid, .info-grid { grid-template-columns: 1fr; }
-            .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 16px 8px; }
-            .stat-number { font-size: 1.3rem; }
-            .stat-label { font-size: 0.65rem; }
-            .btn-cta, .btn-secondary { width: 100%; justify-content: center; }
-            .hero-buttons { width: 100%; }
+            .showroom-grid, .services-grid, .info-grid, .about-grid { grid-template-columns: 1fr; }
+            .top-bar-container { justify-content: center; text-align: center; }
+            .top-contacts { justify-content: center; }
         }
     </style>
 </head>
 <body>
+
+    <!-- TOPBAR CONTATTI UFFICIALI -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="top-contacts">
+                <a href="tel:3444875970"><i class="fa-solid fa-phone" style="color: #25D366;"></i> 344 487 5970</a>
+                <a href="tel:3500414682"><i class="fa-solid fa-phone" style="color: #25D366;"></i> 350 041 4682</a>
+            </div>
+            <div class="top-hours">
+                <i class="fa-solid fa-clock"></i> LUN-VEN 09:00–13:30 / 15:00-20:00 | SAB 09:00-13:30
+            </div>
+        </div>
+    </div>
 
     <!-- NAVBAR -->
     <nav>
@@ -585,14 +649,15 @@
             </a>
             
             <ul class="nav-links">
-                <li><a href="#showroom">Showroom</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#chi-siamo">Chi Siamo</a></li>
                 <li><a href="#servizi">Servizi</a></li>
-                <li><a href="#dove-siamo">Dove Siamo</a></li>
-                <li><a href="#orari">Orari</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contatti">Contatti</a></li>
             </ul>
 
-            <a href="https://wa.me/393282229532?text=Ciao%20Alfano%20Cars,%20vorrei%20maggiori%20informazioni" target="_blank" class="btn-cta">
-                <i class="fa-brands fa-whatsapp"></i> Contattaci
+            <a href="https://wa.me/393444875970?text=Ciao%20Alfano%20Cars,%20vorrei%20maggiori%20informazioni" target="_blank" class="btn-whatsapp-top">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
             </a>
         </div>
     </nav>
@@ -601,57 +666,59 @@
     <header class="hero">
         <div class="container">
             <div class="hero-badge" data-aos="fade-down">
-                <span class="pulse-green"></span> Showroom Attivo • Bergamo
+                <span class="pulse-green"></span> Pompei (NA) • Vendita & Noleggio Auto
             </div>
             
             <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-                L'Eccellenza Automotive.
+                La Tua Nuova Auto Ti Aspetta.
             </h1>
             
             <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="150">
-                Selezioniamo le migliori supercar, vetture sportive e di lusso con massima trasparenza, garanzia controllata e assistenza dedicata.
+                Concessionaria leader a Pompei per la vendita e il noleggio di autovetture plurimarca, sportive e di lusso con garanzia e massima affidabilità.
             </p>
             
             <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
-                <a href="https://wa.me/393282229532?text=Ciao%20Alfano%20Cars,%20vorrei%20informazioni" target="_blank" class="btn-cta">
-                    <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+                <a href="https://wa.me/393444875970?text=Buongiorno,%20vorrei%20ricevere%20informazioni%20sulle%20auto%20disponibili" target="_blank" class="btn-cta">
+                    <i class="fa-brands fa-whatsapp"></i> Contattaci Subito
                 </a>
-                <a href="#showroom" class="btn-secondary">
-                    Scopri Auto <i class="fa-solid fa-arrow-down"></i>
+                <a href="#gallery" class="btn-secondary">
+                    Esplora Gallery <i class="fa-solid fa-arrow-down"></i>
                 </a>
-            </div>
-
-            <!-- STATS -->
-            <div class="stats-bar" data-aos="fade-up" data-aos-delay="250">
-                <div class="stat-item">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Consegne</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Garanzia</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Assistenza</div>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- SHOWROOM AUTO -->
-    <section id="showroom">
+    <!-- CHI SIAMO -->
+    <section id="chi-siamo">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text" data-aos="fade-right">
+                    <span class="section-tag">La Nostra Azienda</span>
+                    <h2 class="section-title" style="margin-bottom: 20px;">Passione e Professionalità su Quattro Ruote</h2>
+                    <p>Alfano Cars nasce con l'obiettivo di offrire ai propri clienti un'esperienza di acquisto e noleggio senza compromessi. Ci trovate a Pompei (NA) in Via Tre Ponti con un parco auto selezionato e controllato.</p>
+                    <p>Seguiamo ogni cliente passo dopo passo, dalla scelta del veicolo ideale fino all'assistenza post-vendita e alle soluzioni di finanziamento personalizzate.</p>
+                    <a href="tel:3444875970" class="btn-cta" style="margin-top: 10px;">Chiama Ora</a>
+                </div>
+                <div class="about-card-img" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Showroom Alfano Cars">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY / SHOWROOM -->
+    <section id="gallery" style="background: rgba(255,255,255,0.01);">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Parco Auto</span>
-                <h2 class="section-title">Supercar in Evidenza</h2>
+                <h2 class="section-title">Ultime Arrivate in Gallery</h2>
             </div>
 
             <div class="showroom-grid">
                 <!-- CAR 1 -->
                 <div class="car-card" data-aos="fade-up">
                     <div class="car-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Porsche GT3">
+                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Sportiva">
                         <div class="car-badge">Disponibile</div>
                     </div>
                     <div class="car-details">
@@ -662,8 +729,8 @@
                             <span><i class="fa-solid fa-road"></i> 4.500 km</span>
                         </div>
                         <div class="car-bottom">
-                            <div class="car-price">Trattativa Riservata</div>
-                            <a href="https://wa.me/393282229532?text=Sono%20interessato%20alla%20Porsche%20911%20GT3" target="_blank" class="btn-whatsapp-sm">
+                            <div class="car-price">Trattativa in Sede</div>
+                            <a href="https://wa.me/393444875970?text=Sono%20interessato%20alla%20Porsche" target="_blank" class="btn-whatsapp-sm">
                                 <i class="fa-brands fa-whatsapp"></i> Info
                             </a>
                         </div>
@@ -671,21 +738,21 @@
                 </div>
 
                 <!-- CAR 2 -->
-                <div class="car-card" data-aos="fade-up">
+                <div class="car-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="car-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Lamborghini Huracán">
+                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Supercar">
                         <div class="car-badge">In Arrivo</div>
                     </div>
                     <div class="car-details">
-                        <h3 class="car-title">Lamborghini Huracán STO</h3>
+                        <h3 class="car-title">Lamborghini Huracán</h3>
                         <div class="car-specs">
                             <span><i class="fa-solid fa-gauge-high"></i> 640 CV</span>
                             <span><i class="fa-solid fa-calendar"></i> 2023</span>
                             <span><i class="fa-solid fa-road"></i> 9.800 km</span>
                         </div>
                         <div class="car-bottom">
-                            <div class="car-price">Trattativa Riservata</div>
-                            <a href="https://wa.me/393282229532?text=Sono%20interessato%20alla%20Lamborghini%20Huracan" target="_blank" class="btn-whatsapp-sm">
+                            <div class="car-price">Trattativa in Sede</div>
+                            <a href="https://wa.me/393444875970?text=Sono%20interessato%20alla%20Lamborghini" target="_blank" class="btn-whatsapp-sm">
                                 <i class="fa-brands fa-whatsapp"></i> Info
                             </a>
                         </div>
@@ -693,21 +760,21 @@
                 </div>
 
                 <!-- CAR 3 -->
-                <div class="car-card" data-aos="fade-up">
+                <div class="car-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="car-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Audi RS6">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Audi RS">
                         <div class="car-badge">Disponibile</div>
                     </div>
                     <div class="car-details">
-                        <h3 class="car-title">Audi RS6 Avant Performance</h3>
+                        <h3 class="car-title">Audi RS6 Avant</h3>
                         <div class="car-specs">
                             <span><i class="fa-solid fa-gauge-high"></i> 630 CV</span>
                             <span><i class="fa-solid fa-calendar"></i> 2024</span>
                             <span><i class="fa-solid fa-road"></i> 12.000 km</span>
                         </div>
                         <div class="car-bottom">
-                            <div class="car-price">Trattativa Riservata</div>
-                            <a href="https://wa.me/393282229532?text=Sono%20interessato%20alla%20Audi%20RS6" target="_blank" class="btn-whatsapp-sm">
+                            <div class="car-price">Trattativa in Sede</div>
+                            <a href="https://wa.me/393444875970?text=Sono%20interessato%20all'Audi%20RS6" target="_blank" class="btn-whatsapp-sm">
                                 <i class="fa-brands fa-whatsapp"></i> Info
                             </a>
                         </div>
@@ -718,75 +785,72 @@
     </section>
 
     <!-- SERVIZI -->
-    <section id="servizi" style="background: rgba(255,255,255,0.01);">
+    <section id="servizi">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Servizi Esclusivi</span>
-                <h2 class="section-title">Perché Scegliere Alfano Cars</h2>
+                <span class="section-tag">Cosa Facciamo</span>
+                <h2 class="section-title">I Nostri Servizi</h2>
             </div>
 
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up">
-                    <div class="service-icon"><i class="fa-solid fa-handshake"></i></div>
-                    <h3>Vendita & Acquisto</h3>
-                    <p>Valutiamo ed acquistiamo la tua vettura alle migliori condizioni di mercato con pagamento rapido e sicuro.</p>
+                    <div class="service-icon"><i class="fa-solid fa-car"></i></div>
+                    <h3>Vendita Auto Usate e Nuove</h3>
+                    <p>Ampia scelta di vetture multimarca controllate, certificate e garantite per ogni esigenza di guida.</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up">
-                    <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Garanzia e Certificazione</h3>
-                    <p>Ogni auto viene sottoposta a rigorosi controlli tecnici prima della consegna con possibilità di garanzia estesa.</p>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fa-solid fa-key"></i></div>
+                    <h3>Noleggio a Lungo e Breve Termine</h3>
+                    <p>Soluzioni flessibili di noleggio auto per privati e aziende con formule all-inclusive senza pensieri.</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up">
-                    <div class="service-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
-                    <h3>Consegna a Domicilio</h3>
-                    <p>Portiamo la tua nuova auto direttamente a casa tua su tutto il territorio nazionale tramite bisarca riservata.</p>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <h3>Finanziamenti in Sede</h3>
+                    <p>Piani di finanziamento personalizzati e tassi agevolati con pratiche approvate in tempi rapidi.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DOVE SIAMO & ORARI -->
-    <section id="dove-siamo">
+    <!-- DOVE SIAMO & CONTATTI -->
+    <section id="contatti" style="background: rgba(255,255,255,0.01);">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Contatti & Sede</span>
-                <h2 class="section-title">Vieni in Showroom</h2>
+                <span class="section-tag">Vienici a Trovare</span>
+                <h2 class="section-title">Dove Siamo & Orari</h2>
             </div>
 
             <div class="info-grid">
-                <!-- ORARI E CONTATTI -->
-                <div class="info-card" data-aos="fade-up" id="orari">
+                <!-- ORARI E INDIRIZZO -->
+                <div class="info-card" data-aos="fade-up">
                     <div class="info-header">
-                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div>
-                            <h3>Orari di Apertura</h3>
-                            <p style="color: var(--text-muted); font-size: 0.85rem;">Assistenza ed appuntamenti</p>
+                            <h3>Alfano Cars S.R.L.S.</h3>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">Via Tre Ponti 153, Pompei (NA)</p>
                         </div>
                     </div>
 
                     <ul class="hours-list">
-                        <li><span class="day">Lunedì - Venerdì:</span> <span>09:00 - 12:30 | 14:30 - 19:00</span></li>
-                        <li><span class="day">Sabato:</span> <span>09:00 - 12:30 | Pomeriggio su appuntamento</span></li>
+                        <li><span class="day">Lunedì - Venerdì:</span> <span>09:00 – 13:30 | 15:00 - 20:00</span></li>
+                        <li><span class="day">Sabato:</span> <span>09:00 - 13:30</span></li>
                         <li><span class="day">Domenica:</span> <span>Chiuso</span></li>
                     </ul>
 
                     <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-glass);">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                            <i class="fa-solid fa-phone" style="color: #FFF;"></i>
-                            <a href="tel:+393282229532" style="color: #FFF; text-decoration: none; font-weight: 600;">+39 328 222 9532</a>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
-                            <a href="mailto:info@alfanocars.it" style="color: #FFF; text-decoration: none; font-weight: 600;">info@alfanocars.it</a>
+                            <i class="fa-solid fa-phone" style="color: #25D366;"></i>
+                            <a href="tel:3444875970" style="color: #FFF; text-decoration: none; font-weight: 600;">344 487 5970</a> / 
+                            <a href="tel:3500414682" style="color: #FFF; text-decoration: none; font-weight: 600;">350 041 4682</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- MAPPA MAP -->
+                <!-- MAPPA -->
                 <div class="map-container" data-aos="fade-up">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d178822.37894297653!2d9.043534571936332!3d45.5401931608678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1417a8080f3%3A0x1d374e2d3df2ee28!2sMilano%20MI!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.1873130541786!2d14.498!3d40.752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133ba50c3a000001%3A0x0!2sVia%20Tre%20Ponti%2C%20153%2C%2080045%20Pompei%20NA!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -799,17 +863,17 @@
                 ALFANO<span>CARS</span>
             </div>
             <p style="color: var(--text-muted); font-size: 0.9rem;">
-                Vendita, noleggio e consulenza per autovetture sportive e di lusso.
+                Vendita e Noleggio Auto • Pompei (NA)
             </p>
 
             <div class="footer-socials">
                 <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="social-link">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a href="https://wa.me/393282229532" target="_blank" class="social-link">
+                <a href="https://wa.me/393444875970" target="_blank" class="social-link">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
-                <a href="tel:+393282229532" class="social-link">
+                <a href="tel:3444875970" class="social-link">
                     <i class="fa-solid fa-phone"></i>
                 </a>
             </div>
@@ -831,7 +895,7 @@
         AOS.init({
             duration: 800,
             once: true,
-            disable: 'mobile' // Disabilita animazioni laterali da mobile per fluidità massima
+            disable: 'mobile'
         });
     </script>
 
