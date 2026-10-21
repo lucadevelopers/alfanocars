@@ -1,1 +1,616 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfano Cars | Concessionaria Supercar & Auto Luxury</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome per Icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0A0B0E;
+            --bg-card: rgba(18, 20, 29, 0.75);
+            --primary-accent: #E5A93C; /* Oro Warm / Luxury */
+            --primary-glow: rgba(229, 169, 60, 0.25);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --radius-lg: 20px;
+            --radius-sm: 12px;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER & NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 11, 14, 0.85);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+        }
+
+        .logo-brand span {
+            color: var(--primary-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-accent);
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, #E5A93C 0%, #C8881E 100%);
+            color: #000;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(229, 169, 60, 0.4);
+        }
+
+        /* HERO SECTION */
+        header.hero {
+            padding: 160px 0 100px;
+            position: relative;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, rgba(229, 169, 60, 0.12) 0%, rgba(10, 11, 14, 1) 70%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 169, 60, 0.1);
+            border: 1px solid rgba(229, 169, 60, 0.3);
+            color: var(--primary-accent);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 36px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: #FFF;
+            padding: 12px 26px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* SEZIONI GENERALI */
+        section {
+            padding: 90px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-tag {
+            color: var(--primary-accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #FFF;
+        }
+
+        /* INSTAGRAM FEED REAL SECTION */
+        .insta-feed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .insta-embed-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 480px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .insta-embed-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(229, 169, 60, 0.3);
+        }
+
+        .insta-callout {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* SHOWROOM AUTO */
+        .showroom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .car-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .car-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .car-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover .car-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .car-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(10, 11, 14, 0.8);
+            backdrop-filter: blur(8px);
+            color: var(--primary-accent);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(229, 169, 60, 0.3);
+        }
+
+        .car-details {
+            padding: 24px;
+        }
+
+        .car-title {
+            font-size: 1.4rem;
+            color: #FFF;
+            margin-bottom: 8px;
+        }
+
+        .car-specs {
+            display: flex;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 16px;
+        }
+
+        .car-specs span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .car-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .car-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-accent);
+        }
+
+        .btn-whatsapp-sm {
+            background: rgba(37, 211, 102, 0.15);
+            color: #25D366;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp-sm:hover {
+            background: #25D366;
+            color: #000;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #060709;
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-glass);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFF;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo span {
+            color: var(--primary-accent);
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-accent);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--border-glass);
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
+        .footer-credits a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-credits a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.6rem; }
+            .nav-links { display: none; }
+            .showroom-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo-brand">
+                <i class="fa-solid fa-car-side" style="color: var(--primary-accent);"></i> ALFANO<span>CARS</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#instagram">Feed Live</a></li>
+                <li><a href="#showroom">Showroom</a></li>
+                <li><a href="#chi-siamo">Servizi</a></li>
+            </ul>
+
+            <a href="https://wa.me/393000000000?text=Ciao%20Alfano%20Cars,%20vorrei%20informazioni%20su%20un'auto" target="_blank" class="btn-cta">
+                <i class="fa-brands fa-whatsapp"></i> Contattaci
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fa-solid fa-gem"></i> Concessionaria & Service Luxury
+            </div>
+            <h1 class="hero-title">Il tuo sogno a quattro ruote inizia qui.</h1>
+            <p class="hero-subtitle">
+                Selezioniamo solo le migliori supercar, auto sportive e veicoli premium. Segui le nostre novità in tempo reale direttamente dal nostro Instagram.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="btn-cta">
+                    <i class="fa-brands fa-instagram"></i> Profilo Instagram
+                </a>
+                <a href="#showroom" class="btn-secondary">
+                    Scopri lo Showroom <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEZIONE INSTAGRAM LIVE REAL FEED -->
+    <section id="instagram">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Social Live</span>
+                <h2 class="section-title">Direttamente da @alfano_cars</h2>
+                <p style="color: var(--text-muted); margin-top: 10px;">
+                    Guarda gli ultimi arrivi, i video dei rombi e le recensioni reali pubblicate sul nostro profilo Instagram.
+                </p>
+            </div>
+
+            <div class="insta-feed-grid">
+                <!-- EMBED INSTAGRAM POST 1 -->
+                <div class="insta-embed-card">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DF25m4xM3vS/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;"></blockquote>
+                </div>
+
+                <!-- EMBED INSTAGRAM POST 2 -->
+                <div class="insta-embed-card">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/alfano_cars/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;"></blockquote>
+                </div>
+            </div>
+
+            <div class="insta-callout">
+                <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="btn-secondary">
+                    <i class="fa-brands fa-instagram" style="color: #E1306C;"></i> Vuoi vedere tutte le Storie e i Reels? Clicca qui
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWROOM AUTO -->
+    <section id="showroom" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Parco Auto</span>
+                <h2 class="section-title">Showroom in Evidenza</h2>
+            </div>
+
+            <div class="showroom-grid">
+                <!-- AUTO 1 -->
+                <div class="car-card">
+                    <div class="car-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Porsche 911 GT3">
+                        <div class="car-badge">Disponibile</div>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">Porsche 911 GT3 RS</h3>
+                        <div class="car-specs">
+                            <span><i class="fa-solid fa-gauge-high"></i> 525 CV</span>
+                            <span><i class="fa-solid fa-calendar"></i> 2024</span>
+                            <span><i class="fa-solid fa-road"></i> 4.500 km</span>
+                        </div>
+                        <div class="car-bottom">
+                            <div class="car-price">Trattativa Riservata</div>
+                            <a href="https://wa.me/393000000000?text=Sono%20interessato%20alla%20Porsche%20911%20GT3" target="_blank" class="btn-whatsapp-sm">
+                                <i class="fa-brands fa-whatsapp"></i> Info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AUTO 2 -->
+                <div class="car-card">
+                    <div class="car-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Lamborghini Huracán">
+                        <div class="car-badge">In Arrivo</div>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">Lamborghini Huracán STO</h3>
+                        <div class="car-specs">
+                            <span><i class="fa-solid fa-gauge-high"></i> 640 CV</span>
+                            <span><i class="fa-solid fa-calendar"></i> 2023</span>
+                            <span><i class="fa-solid fa-road"></i> 9.800 km</span>
+                        </div>
+                        <div class="car-bottom">
+                            <div class="car-price">Trattativa Riservata</div>
+                            <a href="https://wa.me/393000000000?text=Sono%20interessato%20alla%20Lamborghini%20Huracan" target="_blank" class="btn-whatsapp-sm">
+                                <i class="fa-brands fa-whatsapp"></i> Info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AUTO 3 -->
+                <div class="car-card">
+                    <div class="car-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Audi RS6 Avant">
+                        <div class="car-badge">Disponibile</div>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">Audi RS6 Avant Performance</h3>
+                        <div class="car-specs">
+                            <span><i class="fa-solid fa-gauge-high"></i> 630 CV</span>
+                            <span><i class="fa-solid fa-calendar"></i> 2024</span>
+                            <span><i class="fa-solid fa-road"></i> 12.000 km</span>
+                        </div>
+                        <div class="car-bottom">
+                            <div class="car-price">Trattativa Riservata</div>
+                            <a href="https://wa.me/393000000000?text=Sono%20interessato%20alla%20Audi%20RS6" target="_blank" class="btn-whatsapp-sm">
+                                <i class="fa-brands fa-whatsapp"></i> Info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                ALFANO<span>CARS</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Vendita, noleggio e consulenza per autovetture sportive e di lusso.
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="social-link">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/393000000000" target="_blank" class="social-link">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <p class="footer-credits" style="color: var(--text-muted); font-size: 0.88rem;">
+                &copy; 2026 Alfano Cars • Created by 
+                <a href="https://www.instagram.com/lukse__" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram" style="margin-left: 4px;"></i> Luca Sessa
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT UFFICIALE INSTAGRAM EMBED -->
+    <script async src="https://www.instagram.com/embed.js"></script>
+
+</body>
+</html>
