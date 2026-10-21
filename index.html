@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfano Cars | Concessionaria Supercar & Auto Luxury</title>
+    <title>Alfano Cars | Supercar & Luxury Automotive</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome per Icone -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Motion CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
             --bg-dark: #000000;
-            --bg-card: rgba(18, 18, 18, 0.75);
-            --primary-accent: #FFFFFF;
+            --bg-card: rgba(18, 18, 20, 0.75);
+            --bg-card-hover: rgba(28, 28, 32, 0.9);
             --text-main: #FFFFFF;
             --text-muted: #A1A1AA;
             --border-glass: rgba(255, 255, 255, 0.12);
-            --radius-lg: 20px;
-            --radius-sm: 12px;
+            --accent-glow: rgba(255, 255, 255, 0.15);
+            --radius-lg: 24px;
+            --radius-md: 16px;
         }
 
         * {
@@ -57,7 +61,8 @@
             left: 0;
             right: 0;
             background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-glass);
             transition: all 0.3s ease;
@@ -67,18 +72,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            height: 86px;
         }
 
         .logo-brand {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #FFF;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
         }
 
         .logo-brand span {
@@ -108,26 +113,28 @@
             background: #FFFFFF;
             color: #000000;
             font-weight: 700;
-            padding: 10px 22px;
+            padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
         }
 
         .btn-cta:hover {
             background: #E4E4E7;
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25);
         }
 
         /* HERO SECTION */
         header.hero {
-            padding: 160px 0 100px;
+            padding: 180px 0 110px;
             position: relative;
             text-align: center;
-            background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 1) 70%);
+            background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 1) 75%);
         }
 
         .hero-badge {
@@ -137,26 +144,29 @@
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-glass);
             color: var(--text-main);
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 24px;
+            backdrop-filter: blur(10px);
         }
 
         .hero-title {
-            font-size: 3.8rem;
+            font-size: 4rem;
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             color: #FFFFFF;
+            letter-spacing: -1px;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 36px;
+            max-width: 720px;
+            margin: 0 auto 40px;
+            font-weight: 400;
         }
 
         .hero-buttons {
@@ -170,7 +180,7 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
             color: #FFF;
-            padding: 12px 26px;
+            padding: 12px 28px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -178,76 +188,79 @@
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* STATS COUNTER BAR */
+        .stats-bar {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(16px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Syne', sans-serif;
+            color: #FFF;
+        }
+
+        .stat-label {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* SEZIONI GENERALI */
         section {
-            padding: 90px 0;
+            padding: 100px 0;
             position: relative;
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
+            max-width: 750px;
+            margin: 0 auto 60px;
         }
 
         .section-tag {
             color: var(--text-muted);
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: #FFF;
-        }
-
-        /* INSTAGRAM FEED REAL SECTION */
-        .insta-feed-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            justify-content: center;
-        }
-
-        .insta-embed-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
-            padding: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 480px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .insta-embed-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .insta-callout {
-            text-align: center;
-            margin-top: 40px;
+            line-height: 1.2;
         }
 
         /* SHOWROOM AUTO */
         .showroom-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
         }
 
         .car-card {
@@ -255,18 +268,19 @@
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .car-card:hover {
-            transform: translateY(-8px);
-            border-color: #FFFFFF;
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.08);
+            background: var(--bg-card-hover);
         }
 
         .car-img-wrapper {
             position: relative;
-            height: 220px;
+            height: 240px;
             overflow: hidden;
         }
 
@@ -274,7 +288,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .car-card:hover .car-img-wrapper img {
@@ -296,23 +310,23 @@
         }
 
         .car-details {
-            padding: 24px;
+            padding: 28px;
         }
 
         .car-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #FFF;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .car-specs {
             display: flex;
             gap: 16px;
             color: var(--text-muted);
-            font-size: 0.88rem;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
             border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 16px;
+            padding-bottom: 20px;
         }
 
         .car-specs span {
@@ -328,23 +342,23 @@
         }
 
         .car-price {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: #FFFFFF;
         }
 
         .btn-whatsapp-sm {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             color: #FFFFFF;
             border: 1px solid var(--border-glass);
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             transition: all 0.3s ease;
         }
 
@@ -353,20 +367,142 @@
             color: #000000;
         }
 
+        /* SERVIZI CARDS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: var(--bg-card-hover);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #FFF;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: #FFF;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* DOVE SIAMO & CONTATTI INFO SECTION */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #FFF;
+            border: 1px solid var(--border-glass);
+        }
+
+        .info-header h3 {
+            font-size: 1.5rem;
+            color: #FFF;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list span.day {
+            color: #FFF;
+            font-weight: 600;
+        }
+
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            height: 100%;
+            min-height: 380px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(100%) invert(92%) contrast(83%);
+        }
+
         /* FOOTER */
         footer {
             background: #000000;
-            padding: 60px 0 30px;
+            padding: 70px 0 40px;
             border-top: 1px solid var(--border-glass);
             text-align: center;
         }
 
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 800;
             color: #FFF;
             margin-bottom: 12px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .footer-logo span {
@@ -377,12 +513,12 @@
             display: flex;
             justify-content: center;
             gap: 16px;
-            margin: 24px 0;
+            margin: 28px 0;
         }
 
         .social-link {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
             border-radius: 50%;
@@ -403,8 +539,8 @@
         .footer-divider {
             height: 1px;
             background: var(--border-glass);
-            margin: 30px auto;
-            max-width: 600px;
+            margin: 36px auto;
+            max-width: 650px;
         }
 
         .footer-credits a {
@@ -417,11 +553,12 @@
             opacity: 0.7;
         }
 
-        /* RESPONSIVE MOBILE */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.6rem; }
+            .hero-title { font-size: 2.8rem; }
             .nav-links { display: none; }
             .showroom-grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -435,13 +572,14 @@
             </a>
             
             <ul class="nav-links">
-                <li><a href="#instagram">Feed Live</a></li>
                 <li><a href="#showroom">Showroom</a></li>
-                <li><a href="#chi-siamo">Servizi</a></li>
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#dove-siamo">Dove Siamo</a></li>
+                <li><a href="#orari">Orari</a></li>
             </ul>
 
-            <a href="https://wa.me/393000000000?text=Ciao%20Alfano%20Cars,%20vorrei%20informazioni%20su%20un'auto" target="_blank" class="btn-cta">
-                <i class="fa-brands fa-whatsapp"></i> Contattaci
+            <a href="https://wa.me/393282229532?text=Ciao%20Alfano%20Cars,%20vorrei%20maggiori%20informazioni" target="_blank" class="btn-cta">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
             </a>
         </div>
     </nav>
@@ -449,68 +587,58 @@
     <!-- HERO HEADER -->
     <header class="hero">
         <div class="container">
-            <div class="hero-badge">
-                <i class="fa-solid fa-gem"></i> Concessionaria & Service Luxury
+            <div class="hero-badge" data-aos="fade-down" data-aos-duration="800">
+                <i class="fa-solid fa-gem"></i> Supercar & Luxury Automotive
             </div>
-            <h1 class="hero-title">Il tuo sogno a quattro ruote inizia qui.</h1>
-            <p class="hero-subtitle">
-                Selezioniamo solo le migliori supercar, auto sportive e veicoli premium. Segui le nostre novità in tempo reale direttamente dal nostro Instagram.
+            
+            <h1 class="hero-title" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+                L'Eccellenza Automotive a Porta di Mano.
+            </h1>
+            
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                Selezioniamo ed eroghiamo le migliori supercar, vetture sportive e di lusso con massima trasparenza, garanzia ufficiale e assistenza dedicata.
             </p>
-            <div class="hero-buttons">
-                <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="btn-cta">
-                    <i class="fa-brands fa-instagram"></i> Profilo Instagram
+            
+            <div class="hero-buttons" data-aos="fade-up" data-aos-duration="900" data-aos-delay="300">
+                <a href="#showroom" class="btn-cta">
+                    Esplora lo Showroom <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <a href="#showroom" class="btn-secondary">
-                    Scopri lo Showroom <i class="fa-solid fa-arrow-down"></i>
+                <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="btn-secondary">
+                    <i class="fa-brands fa-instagram"></i> @alfano_cars
                 </a>
+            </div>
+
+            <!-- CONTATORI STATISTICHE -->
+            <div class="stats-bar" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Auto Consegnate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Garanzia Controllata</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Assistenza VIP</div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- SEZIONE INSTAGRAM LIVE REAL FEED -->
-    <section id="instagram">
+    <!-- SHOWROOM AUTO (AOS MOTION) -->
+    <section id="showroom">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Social Live</span>
-                <h2 class="section-title">Direttamente da @alfano_cars</h2>
-                <p style="color: var(--text-muted); margin-top: 10px;">
-                    Guarda gli ultimi arrivi, i video dei rombi e le recensioni reali pubblicate sul nostro profilo Instagram.
-                </p>
-            </div>
-
-            <div class="insta-feed-grid">
-                <!-- EMBED INSTAGRAM POST 1 -->
-                <div class="insta-embed-card">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DF25m4xM3vS/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;"></blockquote>
-                </div>
-
-                <!-- EMBED INSTAGRAM POST 2 -->
-                <div class="insta-embed-card">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/alfano_cars/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;"></blockquote>
-                </div>
-            </div>
-
-            <div class="insta-callout">
-                <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="btn-secondary">
-                    <i class="fa-brands fa-instagram" style="color: #FFF;"></i> Vuoi vedere tutte le Storie e i Reels? Clicca qui
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SHOWROOM AUTO -->
-    <section id="showroom" style="background: rgba(255,255,255,0.01);">
-        <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Parco Auto</span>
-                <h2 class="section-title">Showroom in Evidenza</h2>
+                <h2 class="section-title">Le Nostre Supercar in Evidenza</h2>
             </div>
 
             <div class="showroom-grid">
-                <!-- AUTO 1 -->
-                <div class="car-card">
+                <!-- CAR 1 -->
+                <div class="car-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="car-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Porsche 911 GT3">
+                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Porsche GT3">
                         <div class="car-badge">Disponibile</div>
                     </div>
                     <div class="car-details">
@@ -522,15 +650,15 @@
                         </div>
                         <div class="car-bottom">
                             <div class="car-price">Trattativa Riservata</div>
-                            <a href="https://wa.me/393000000000?text=Sono%20interessato%20alla%20Porsche%20911%20GT3" target="_blank" class="btn-whatsapp-sm">
+                            <a href="https://wa.me/393282229532?text=Sono%20interessato%20alla%20Porsche%20911%20GT3" target="_blank" class="btn-whatsapp-sm">
                                 <i class="fa-brands fa-whatsapp"></i> Info
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- AUTO 2 -->
-                <div class="car-card">
+                <!-- CAR 2 -->
+                <div class="car-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="car-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Lamborghini Huracán">
                         <div class="car-badge">In Arrivo</div>
@@ -544,17 +672,17 @@
                         </div>
                         <div class="car-bottom">
                             <div class="car-price">Trattativa Riservata</div>
-                            <a href="https://wa.me/393000000000?text=Sono%20interessato%20alla%20Lamborghini%20Huracan" target="_blank" class="btn-whatsapp-sm">
+                            <a href="https://wa.me/393282229532?text=Sono%20interessato%20alla%20Lamborghini%20Huracan" target="_blank" class="btn-whatsapp-sm">
                                 <i class="fa-brands fa-whatsapp"></i> Info
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- AUTO 3 -->
-                <div class="car-card">
+                <!-- CAR 3 -->
+                <div class="car-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="car-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Audi RS6 Avant">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Audi RS6">
                         <div class="car-badge">Disponibile</div>
                     </div>
                     <div class="car-details">
@@ -566,11 +694,86 @@
                         </div>
                         <div class="car-bottom">
                             <div class="car-price">Trattativa Riservata</div>
-                            <a href="https://wa.me/393000000000?text=Sono%20interessato%20alla%20Audi%20RS6" target="_blank" class="btn-whatsapp-sm">
+                            <a href="https://wa.me/393282229532?text=Sono%20interessato%20alla%20Audi%20RS6" target="_blank" class="btn-whatsapp-sm">
                                 <i class="fa-brands fa-whatsapp"></i> Info
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIZI -->
+    <section id="servizi" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Servizi Esclusivi</span>
+                <h2 class="section-title">Perché Scegliere Alfano Cars</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Vendita & Intermediazione</h3>
+                    <p>Valutiamo ed acquistiamo la tua vettura alle migliori condizioni di mercato con pagamento rapido e sicuro.</p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Garanzia e Certificazione</h3>
+                    <p>Ogni auto viene sottoposta a rigorosi controlli tecnici prima della consegna con possibilità di garanzia estesa.</p>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                    <h3>Consegna a Domicilio</h3>
+                    <p>Portiamo la tua nuova auto direttamente a casa tua su tutto il territorio nazionale tramite bisarca dedicata.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOVE SIAMO & ORARI DI APERTURA -->
+    <section id="dove-siamo">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Contatti & Sede</span>
+                <h2 class="section-title">Vieni a Trovarci in Showroom</h2>
+            </div>
+
+            <div class="info-grid">
+                <!-- CONTATTI & ORARI -->
+                <div class="info-card" data-aos="fade-right" id="orari">
+                    <div class="info-header">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h3>Orari di Apertura</h3>
+                            <p style="color: var(--text-muted); font-size: 0.88rem;">Siamo a tua disposizione</p>
+                        </div>
+                    </div>
+
+                    <ul class="hours-list">
+                        <li><span class="day">Lunedì - Venerdì:</span> <span>09:00 - 12:30 | 14:30 - 19:00</span></li>
+                        <li><span class="day">Sabato:</span> <span>09:00 - 12:30 | Pomeriggio su appuntamento</span></li>
+                        <li><span class="day">Domenica:</span> <span>Chiuso</span></li>
+                    </ul>
+
+                    <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-glass);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <i class="fa-solid fa-phone" style="color: #FFF;"></i>
+                            <a href="tel:+393282229532" style="color: #FFF; text-decoration: none; font-weight: 600;">+39 328 222 9532</a>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <i class="fa-solid fa-envelope" style="color: #FFF;"></i>
+                            <a href="mailto:info@alfanocars.it" style="color: #FFF; text-decoration: none; font-weight: 600;">info@alfanocars.it</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MAPPA INTERATTIVA -->
+                <div class="map-container" data-aos="fade-left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d178822.37894297653!2d9.043534571936332!3d45.5401931608678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1417a8080f3%3A0x1d374e2d3df2ee28!2sMilano%20MI!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -590,8 +793,11 @@
                 <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="social-link">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a href="https://wa.me/393000000000" target="_blank" class="social-link">
+                <a href="https://wa.me/393282229532" target="_blank" class="social-link">
                     <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="tel:+393282229532" class="social-link">
+                    <i class="fa-solid fa-phone"></i>
                 </a>
             </div>
 
@@ -606,8 +812,15 @@
         </div>
     </footer>
 
-    <!-- SCRIPT UFFICIALE INSTAGRAM EMBED -->
-    <script async src="https://www.instagram.com/embed.js"></script>
+    <!-- AOS Motion JS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 
 </body>
 </html>
