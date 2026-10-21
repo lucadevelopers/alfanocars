@@ -15,13 +15,12 @@
     
     <style>
         :root {
-            --bg-dark: #0A0B0E;
-            --bg-card: rgba(18, 20, 29, 0.75);
-            --primary-accent: #E5A93C; /* Oro Warm / Luxury */
-            --primary-glow: rgba(229, 169, 60, 0.25);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --border-glass: rgba(255, 255, 255, 0.08);
+            --bg-dark: #000000;
+            --bg-card: rgba(18, 18, 18, 0.75);
+            --primary-accent: #FFFFFF;
+            --text-main: #FFFFFF;
+            --text-muted: #A1A1AA;
+            --border-glass: rgba(255, 255, 255, 0.12);
             --radius-lg: 20px;
             --radius-sm: 12px;
         }
@@ -57,7 +56,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 11, 14, 0.85);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(16px);
             z-index: 1000;
             border-bottom: 1px solid var(--border-glass);
@@ -79,11 +78,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .logo-brand span {
-            color: var(--primary-accent);
+            color: #71717A;
         }
 
         .nav-links {
@@ -98,16 +97,16 @@
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: opacity 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary-accent);
+            opacity: 0.7;
         }
 
         .btn-cta {
-            background: linear-gradient(135deg, #E5A93C 0%, #C8881E 100%);
-            color: #000;
+            background: #FFFFFF;
+            color: #000000;
             font-weight: 700;
             padding: 10px 22px;
             border-radius: 50px;
@@ -115,13 +114,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 20px var(--primary-glow);
             transition: all 0.3s ease;
         }
 
         .btn-cta:hover {
+            background: #E4E4E7;
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(229, 169, 60, 0.4);
         }
 
         /* HERO SECTION */
@@ -129,16 +127,16 @@
             padding: 160px 0 100px;
             position: relative;
             text-align: center;
-            background: radial-gradient(circle at 50% 30%, rgba(229, 169, 60, 0.12) 0%, rgba(10, 11, 14, 1) 70%);
+            background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 1) 70%);
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(229, 169, 60, 0.1);
-            border: 1px solid rgba(229, 169, 60, 0.3);
-            color: var(--primary-accent);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
             padding: 8px 18px;
             border-radius: 50px;
             font-size: 0.85rem;
@@ -151,9 +149,7 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 20px;
-            background: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #FFFFFF;
         }
 
         .hero-subtitle {
@@ -185,8 +181,8 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         /* SEZIONI GENERALI */
@@ -202,7 +198,7 @@
         }
 
         .section-tag {
-            color: var(--primary-accent);
+            color: var(--text-muted);
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -233,13 +229,13 @@
             justify-content: center;
             align-items: center;
             min-height: 480px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .insta-embed-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(229, 169, 60, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .insta-callout {
@@ -264,8 +260,8 @@
 
         .car-card:hover {
             transform: translateY(-8px);
-            border-color: var(--primary-accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border-color: #FFFFFF;
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
         }
 
         .car-img-wrapper {
@@ -289,14 +285,14 @@
             position: absolute;
             top: 16px;
             right: 16px;
-            background: rgba(10, 11, 14, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
-            color: var(--primary-accent);
+            color: #FFFFFF;
             padding: 6px 14px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 700;
-            border: 1px solid rgba(229, 169, 60, 0.3);
+            border: 1px solid var(--border-glass);
         }
 
         .car-details {
@@ -334,13 +330,13 @@
         .car-price {
             font-size: 1.3rem;
             font-weight: 800;
-            color: var(--primary-accent);
+            color: #FFFFFF;
         }
 
         .btn-whatsapp-sm {
-            background: rgba(37, 211, 102, 0.15);
-            color: #25D366;
-            border: 1px solid rgba(37, 211, 102, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border: 1px solid var(--border-glass);
             padding: 8px 16px;
             border-radius: 50px;
             text-decoration: none;
@@ -353,13 +349,13 @@
         }
 
         .btn-whatsapp-sm:hover {
-            background: #25D366;
-            color: #000;
+            background: #FFFFFF;
+            color: #000000;
         }
 
         /* FOOTER */
         footer {
-            background: #060709;
+            background: #000000;
             padding: 60px 0 30px;
             border-top: 1px solid var(--border-glass);
             text-align: center;
@@ -370,10 +366,11 @@
             font-weight: 800;
             color: #FFF;
             margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .footer-logo span {
-            color: var(--primary-accent);
+            color: #71717A;
         }
 
         .footer-socials {
@@ -398,8 +395,8 @@
         }
 
         .social-link:hover {
-            background: var(--primary-accent);
-            color: #000;
+            background: #FFFFFF;
+            color: #000000;
             transform: translateY(-3px);
         }
 
@@ -411,13 +408,13 @@
         }
 
         .footer-credits a {
-            color: var(--primary-accent);
+            color: #FFFFFF;
             text-decoration: none;
             font-weight: 600;
         }
 
         .footer-credits a:hover {
-            text-decoration: underline;
+            opacity: 0.7;
         }
 
         /* RESPONSIVE MOBILE */
@@ -434,7 +431,7 @@
     <nav>
         <div class="container nav-container">
             <a href="#" class="logo-brand">
-                <i class="fa-solid fa-car-side" style="color: var(--primary-accent);"></i> ALFANO<span>CARS</span>
+                <i class="fa-solid fa-car-side" style="color: #FFF;"></i> ALFANO<span>CARS</span>
             </a>
             
             <ul class="nav-links">
@@ -495,7 +492,7 @@
 
             <div class="insta-callout">
                 <a href="https://www.instagram.com/alfano_cars/" target="_blank" class="btn-secondary">
-                    <i class="fa-brands fa-instagram" style="color: #E1306C;"></i> Vuoi vedere tutte le Storie e i Reels? Clicca qui
+                    <i class="fa-brands fa-instagram" style="color: #FFF;"></i> Vuoi vedere tutte le Storie e i Reels? Clicca qui
                 </a>
             </div>
         </div>
