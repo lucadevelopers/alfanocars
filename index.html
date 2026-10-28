@@ -321,6 +321,103 @@
             object-fit: cover;
         }
 
+        /* --- STILI SEZIONE SCROLLER TELEFONO (VENIELLO STYLE) --- */
+        .scroll-phone-section {
+            height: 300vh;
+            position: relative;
+            background-color: #08080a;
+        }
+
+        .sticky-phone-wrapper {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 60px;
+        }
+
+        .scroll-steps-content {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .step-block {
+            margin-bottom: 80px;
+            opacity: 0.25;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .step-block.active {
+            opacity: 1;
+            transform: translateX(10px);
+        }
+
+        .step-block span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .step-block b {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.4rem;
+            color: #FFF;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .step-block p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* MOCKUP TELEFONO */
+        .phone-mockup-frame {
+            width: 290px;
+            height: 590px;
+            background: #111;
+            border: 12px solid #222;
+            border-radius: 44px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.05);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .phone-inner-screen {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .phone-screen-content {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            will-change: transform;
+            transition: transform 0.05s linear;
+        }
+
+        .phone-screen-content img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        /* -------------------------------------------------- */
+
         /* SHOWROOM GALLERY GRID */
         .showroom-grid {
             display: grid;
@@ -614,6 +711,22 @@
         }
 
         /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .sticky-phone-wrapper {
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+            }
+            .scroll-steps-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            .step-block { margin-bottom: 40px; }
+            .phone-mockup-frame { width: 240px; height: 480px; }
+            .scroll-phone-section { height: auto; }
+            .sticky-phone-wrapper { position: relative; height: auto; padding: 40px 20px; }
+        }
+
         @media (max-width: 768px) {
             header.hero { padding: 100px 0 60px; }
             .hero-title { font-size: 2.3rem; }
@@ -701,6 +814,44 @@
                 </div>
                 <div class="about-card-img" data-aos="fade-left">
                     <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Showroom Alfano Cars">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE INTEGRATA: TROVATO, SCELTO, RICORDATO (STYLE VENIELLO) -->
+    <section class="scroll-phone-section" id="metodo">
+        <div class="sticky-phone-wrapper">
+            <!-- Testi interattivi che cambiano in base allo scroll -->
+            <div class="scroll-steps-content">
+                <div class="step-block active" data-index="0">
+                    <span>01 · Google & Maps</span>
+                    <b>Trovato.</b>
+                    <p>Ti posizioniamo al top su Google e Maps con foto reali, orari aggiornati e contatto diretto via WhatsApp.</p>
+                </div>
+                <div class="step-block" data-index="1">
+                    <span>02 · Sito su Misura</span>
+                    <b>Scelto.</b>
+                    <p>Un sito veloce, elegante e ottimizzato per smartphone per mostrare subito le auto disponibili e i prezzi chiari.</p>
+                </div>
+                <div class="step-block" data-index="2">
+                    <span>03 · Social & Reel</span>
+                    <b>Ricordato.</b>
+                    <p>Campagne social e reel dedicati per far rimanere il tuo parco auto impresso nella mente di chi cerca l'auto nuova.</p>
+                </div>
+            </div>
+
+            <!-- Mockup del telefono con scorrimento interno sincronizzato -->
+            <div class="phone-mockup-frame">
+                <div class="phone-inner-screen">
+                    <div class="phone-screen-content" id="phoneContent">
+                        <!-- Immagine 1: Google / Maps -->
+                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=600&q=80" alt="Google Preview">
+                        <!-- Immagine 2: Sito Web Mobile -->
+                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=600&q=80" alt="Sito Web Preview">
+                        <!-- Immagine 3: Instagram / Social -->
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80" alt="Social Preview">
+                    </div>
                 </div>
             </div>
         </div>
@@ -896,6 +1047,44 @@
             duration: 800,
             once: true,
             disable: 'mobile'
+        });
+
+        // Script dedicato per sincronizzare lo scorrimento del telefono e dei blocchi di testo
+        window.addEventListener('scroll', () => {
+            const section = document.querySelector('.scroll-phone-section');
+            const screenContent = document.getElementById('phoneContent');
+            const steps = document.querySelectorAll('.step-block');
+            
+            if (!section || !screenContent) return;
+
+            const rect = section.getBoundingClientRect();
+            const totalScroll = section.clientHeight - window.innerHeight;
+            
+            // Calcolo del progresso dello scroll (da 0 a 1) all'interno della sezione
+            let progress = -rect.top / totalScroll;
+            progress = Math.max(0, Math.min(1, progress));
+
+            // Spostamento verticale dell'immagine dentro il telefono (adatta in base all'altezza delle immagini)
+            const maxTranslate = screenContent.scrollHeight - screenContent.parentElement.clientHeight;
+            if (maxTranslate > 0) {
+                screenContent.style.transform = `translateY(${progress * -maxTranslate}px)`;
+            }
+
+            // Attivazione dei passaggi testuali in base alla percentuale raggiunta
+            let activeIndex = 0;
+            if (progress >= 0.66) {
+                activeIndex = 2;
+            } else if (progress >= 0.33) {
+                activeIndex = 1;
+            }
+
+            steps.forEach((step, index) => {
+                if (index === activeIndex) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
         });
     </script>
 
