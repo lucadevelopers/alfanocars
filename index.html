@@ -8,13 +8,10 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Motion CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
@@ -23,12 +20,13 @@
             --bg-card-hover: rgba(28, 28, 35, 0.95);
             --text-main: #FFFFFF;
             --text-muted: #A1A1AA;
+            --accent-green: #25D366;
             --border-glass: rgba(255, 255, 255, 0.12);
             --radius-lg: 24px;
             --radius-md: 16px;
         }
 
-        /* RESET FISSO ANTI SCROLL ORIZZONTALE */
+        /* RESET ANTI-SCROLL ORIZZONTALE */
         html, body {
             width: 100%;
             max-width: 100%;
@@ -43,12 +41,17 @@
             scroll-behavior: smooth;
         }
 
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
+        *, *:before, *:after { box-sizing: inherit; }
 
         h1, h2, h3, h4, .brand-font {
             font-family: 'Syne', sans-serif;
+        }
+
+        em {
+            font-style: italic;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #A1A1AA;
+            font-weight: 400;
         }
 
         .container {
@@ -58,7 +61,7 @@
             padding: 0 20px;
         }
 
-        /* TOPBAR CONTATTI RAPIDI */
+        /* TOPBAR CONTATTI */
         .top-bar {
             background: #000;
             border-bottom: 1px solid var(--border-glass);
@@ -79,7 +82,6 @@
             display: flex;
             gap: 20px;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .top-contacts a {
@@ -92,22 +94,16 @@
             transition: opacity 0.3s;
         }
 
-        .top-contacts a:hover {
-            opacity: 0.7;
-        }
+        .top-contacts a:hover { opacity: 0.7; }
 
-        .top-hours {
-            font-size: 0.8rem;
-        }
-
-        /* NAVBAR PRINCIPALE */
+        /* NAVBAR GLASS */
         nav {
             position: sticky;
             top: 0;
             left: 0;
             right: 0;
             width: 100%;
-            background: rgba(5, 5, 7, 0.9);
+            background: rgba(5, 5, 7, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -132,15 +128,15 @@
             letter-spacing: 1.5px;
         }
 
-        .logo-brand span {
-            color: #71717A;
-        }
+        .logo-brand span { color: #71717A; }
 
         .nav-links {
             display: flex;
             gap: 28px;
             list-style: none;
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
@@ -151,12 +147,10 @@
             transition: opacity 0.3s;
         }
 
-        .nav-links a:hover {
-            opacity: 0.7;
-        }
+        .nav-links a:hover { opacity: 0.7; }
 
         .btn-whatsapp-top {
-            background: #25D366;
+            background: var(--accent-green);
             color: #FFF;
             font-weight: 700;
             padding: 8px 18px;
@@ -174,13 +168,30 @@
             transform: translateY(-2px);
         }
 
-        /* HERO SECTION */
+        /* HERO WITH CANVAS & REVEAL */
         header.hero {
-            padding: 140px 0 90px;
+            padding: 160px 0 110px;
             position: relative;
             text-align: center;
-            background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08) 0%, rgba(5, 5, 7, 1) 75%);
             overflow: hidden;
+            background: #050507;
+        }
+
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            will-change: transform, opacity;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
         }
 
         .hero-badge {
@@ -206,7 +217,7 @@
         }
 
         .hero-title {
-            font-size: 3.6rem;
+            font-size: 3.8rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -265,17 +276,29 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
+        /* TEXT REVEAL ANIMATIONS (VENIELLO MOTION) */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-text.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* SEZIONI GENERALI */
         section {
-            padding: 90px 0;
+            padding: 100px 0;
             width: 100%;
-            overflow: hidden;
+            position: relative;
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
+            max-width: 720px;
+            margin: 0 auto 55px;
         }
 
         .section-tag {
@@ -284,14 +307,14 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: #FFF;
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
         /* CHI SIAMO */
@@ -312,20 +335,28 @@
             border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--border-glass);
-            height: 340px;
+            height: 360px;
+            position: relative;
         }
 
         .about-card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.8s ease;
         }
 
-        /* --- STILI SEZIONE SCROLLER TELEFONO (VENIELLO STYLE) --- */
+        .about-card-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* STILE SCROLL TELEFONO INTERATTIVO */
         .scroll-phone-section {
             height: 300vh;
             position: relative;
-            background-color: #08080a;
+            background-color: #030304;
+            border-top: 1px solid var(--border-glass);
+            border-bottom: 1px solid var(--border-glass);
         }
 
         .sticky-phone-wrapper {
@@ -339,23 +370,24 @@
             max-width: 1240px;
             margin: 0 auto;
             padding: 0 20px;
-            gap: 60px;
+            gap: 70px;
         }
 
         .scroll-steps-content {
             flex: 1;
-            max-width: 500px;
+            max-width: 520px;
         }
 
         .step-block {
-            margin-bottom: 80px;
-            opacity: 0.25;
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            margin-bottom: 70px;
+            opacity: 0.2;
+            transform: translateY(15px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .step-block.active {
             opacity: 1;
-            transform: translateX(10px);
+            transform: translateY(0);
         }
 
         .step-block span {
@@ -370,7 +402,7 @@
 
         .step-block b {
             font-family: 'Syne', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             color: #FFF;
             display: block;
             margin-bottom: 10px;
@@ -379,19 +411,34 @@
         .step-block p {
             color: var(--text-muted);
             font-size: 1.05rem;
+            line-height: 1.6;
         }
 
-        /* MOCKUP TELEFONO */
+        /* MOCKUP SMARTPHONE ADVANCED */
         .phone-mockup-frame {
-            width: 290px;
-            height: 590px;
-            background: #111;
-            border: 12px solid #222;
-            border-radius: 44px;
+            width: 300px;
+            height: 600px;
+            background: #0d0d11;
+            border: 10px solid #1f1f26;
+            border-radius: 46px;
             overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.05);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.03);
             position: relative;
             flex-shrink: 0;
+        }
+
+        /* Tacca / Notch del Telefono */
+        .phone-mockup-frame::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 18px;
+            background: #1f1f26;
+            border-radius: 20px;
+            z-index: 10;
         }
 
         .phone-inner-screen {
@@ -408,7 +455,6 @@
             top: 0;
             left: 0;
             will-change: transform;
-            transition: transform 0.05s linear;
         }
 
         .phone-screen-content img {
@@ -416,9 +462,8 @@
             display: block;
             object-fit: cover;
         }
-        /* -------------------------------------------------- */
 
-        /* SHOWROOM GALLERY GRID */
+        /* SHOWROOM GRID & CARDS WITH GLOW */
         .showroom-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -431,19 +476,19 @@
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            transition: all 0.4s ease;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
         }
 
         .car-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.35);
             background: var(--bg-card-hover);
         }
 
         .car-img-wrapper {
             position: relative;
-            height: 230px;
+            height: 240px;
             width: 100%;
             overflow: hidden;
         }
@@ -452,33 +497,31 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.7s ease;
         }
 
         .car-card:hover .car-img-wrapper img {
-            transform: scale(1.06);
+            transform: scale(1.08);
         }
 
         .car-badge {
             position: absolute;
             top: 14px;
             right: 14px;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(5, 5, 7, 0.85);
+            backdrop-filter: blur(10px);
             color: #FFFFFF;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 50px;
             font-size: 0.72rem;
             font-weight: 700;
             border: 1px solid var(--border-glass);
         }
 
-        .car-details {
-            padding: 24px;
-        }
+        .car-details { padding: 24px; }
 
         .car-title {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: #FFF;
             margin-bottom: 8px;
         }
@@ -507,7 +550,7 @@
         }
 
         .car-price {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: #FFFFFF;
         }
@@ -528,7 +571,7 @@
         }
 
         .btn-whatsapp-sm:hover {
-            background: #25D366;
+            background: var(--accent-green);
             color: #000;
         }
 
@@ -536,7 +579,7 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 24px;
             width: 100%;
         }
 
@@ -544,33 +587,38 @@
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
-            padding: 32px;
+            padding: 36px;
             transition: all 0.4s ease;
         }
 
+        .service-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
         .service-icon {
-            width: 52px;
-            height: 52px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
+            width: 54px;
+            height: 54px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             color: #FFF;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             border: 1px solid var(--border-glass);
         }
 
         .service-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             color: #FFF;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         /* DOVE SIAMO & ORARI */
@@ -613,22 +661,18 @@
             color: #FFF;
         }
 
-        .hours-list {
-            list-style: none;
-        }
+        .hours-list { list-style: none; padding: 0; margin: 0; }
 
         .hours-list li {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border-glass);
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .hours-list li:last-child {
-            border-bottom: none;
-        }
+        .hours-list li:last-child { border-bottom: none; }
 
         .hours-list span.day {
             color: #FFF;
@@ -667,9 +711,7 @@
             letter-spacing: 1.5px;
         }
 
-        .footer-logo span {
-            color: #71717A;
-        }
+        .footer-logo span { color: #71717A; }
 
         .footer-socials {
             display: flex;
@@ -710,7 +752,7 @@
             font-weight: 600;
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 900px) {
             .sticky-phone-wrapper {
                 flex-direction: column;
@@ -721,18 +763,18 @@
                 max-width: 100%;
                 text-align: center;
             }
-            .step-block { margin-bottom: 40px; }
+            .step-block { margin-bottom: 30px; }
             .phone-mockup-frame { width: 240px; height: 480px; }
             .scroll-phone-section { height: auto; }
-            .sticky-phone-wrapper { position: relative; height: auto; padding: 40px 20px; }
+            .sticky-phone-wrapper { position: relative; height: auto; padding: 60px 20px; }
         }
 
         @media (max-width: 768px) {
-            header.hero { padding: 100px 0 60px; }
-            .hero-title { font-size: 2.3rem; }
+            header.hero { padding: 120px 0 70px; }
+            .hero-title { font-size: 2.4rem; }
             .hero-subtitle { font-size: 1rem; }
             .nav-links { display: none; }
-            .section-title { font-size: 1.9rem; }
+            .section-title { font-size: 2rem; }
             .showroom-grid, .services-grid, .info-grid, .about-grid { grid-template-columns: 1fr; }
             .top-bar-container { justify-content: center; text-align: center; }
             .top-contacts { justify-content: center; }
@@ -741,14 +783,14 @@
 </head>
 <body>
 
-    <!-- TOPBAR CONTATTI UFFICIALI -->
+    <!-- TOPBAR CONTATTI -->
     <div class="top-bar">
         <div class="container top-bar-container">
             <div class="top-contacts">
                 <a href="tel:3444875970"><i class="fa-solid fa-phone" style="color: #25D366;"></i> 344 487 5970</a>
                 <a href="tel:3500414682"><i class="fa-solid fa-phone" style="color: #25D366;"></i> 350 041 4682</a>
             </div>
-            <div class="top-hours">
+            <div>
                 <i class="fa-solid fa-clock"></i> LUN-VEN 09:00–13:30 / 15:00-20:00 | SAB 09:00-13:30
             </div>
         </div>
@@ -764,8 +806,8 @@
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#chi-siamo">Chi Siamo</a></li>
-                <li><a href="#servizi">Servizi</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#metodo">Esperienza</a></li>
+                <li><a href="#gallery">Parco Auto</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
 
@@ -775,22 +817,23 @@
         </div>
     </nav>
 
-    <!-- HERO HEADER -->
+    <!-- HERO HEADER CON CANVAS PARTICELLE -->
     <header class="hero">
-        <div class="container">
-            <div class="hero-badge" data-aos="fade-down">
+        <canvas id="heroCanvas"></canvas>
+        <div class="container hero-content" id="heroContent">
+            <div class="hero-badge">
                 <span class="pulse-green"></span> Pompei (NA) • Vendita & Noleggio Auto
             </div>
             
-            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-                La Tua Nuova Auto Ti Aspetta.
+            <h1 class="hero-title reveal-text">
+                Fatti guidare dal <em>desiderio</em>.<br>Scegli la tua auto.
             </h1>
             
-            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="150">
+            <p class="hero-subtitle reveal-text">
                 Concessionaria leader a Pompei per la vendita e il noleggio di autovetture plurimarca, sportive e di lusso con garanzia e massima affidabilità.
             </p>
             
-            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+            <div class="hero-buttons reveal-text">
                 <a href="https://wa.me/393444875970?text=Buongiorno,%20vorrei%20ricevere%20informazioni%20sulle%20auto%20disponibili" target="_blank" class="btn-cta">
                     <i class="fa-brands fa-whatsapp"></i> Contattaci Subito
                 </a>
@@ -805,71 +848,67 @@
     <section id="chi-siamo">
         <div class="container">
             <div class="about-grid">
-                <div class="about-text" data-aos="fade-right">
+                <div class="about-text reveal-text">
                     <span class="section-tag">La Nostra Azienda</span>
-                    <h2 class="section-title" style="margin-bottom: 20px;">Passione e Professionalità su Quattro Ruote</h2>
+                    <h2 class="section-title" style="margin-bottom: 20px;">Passione e Professionalità <em>su quattro ruote</em></h2>
                     <p>Alfano Cars nasce con l'obiettivo di offrire ai propri clienti un'esperienza di acquisto e noleggio senza compromessi. Ci trovate a Pompei (NA) in Via Tre Ponti con un parco auto selezionato e controllato.</p>
                     <p>Seguiamo ogni cliente passo dopo passo, dalla scelta del veicolo ideale fino all'assistenza post-vendita e alle soluzioni di finanziamento personalizzate.</p>
                     <a href="tel:3444875970" class="btn-cta" style="margin-top: 10px;">Chiama Ora</a>
                 </div>
-                <div class="about-card-img" data-aos="fade-left">
+                <div class="about-card-img reveal-text">
                     <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Showroom Alfano Cars">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEZIONE INTEGRATA: TROVATO, SCELTO, RICORDATO (STYLE VENIELLO) -->
+    <!-- SEZIONE SCROLL TELEFONO (SCROLLYTELLING / VENIELLO STYLE) -->
     <section class="scroll-phone-section" id="metodo">
         <div class="sticky-phone-wrapper">
-            <!-- Testi interattivi che cambiano in base allo scroll -->
             <div class="scroll-steps-content">
                 <div class="step-block active" data-index="0">
-                    <span>01 · Google & Maps</span>
+                    <span>01 · Presenza Google</span>
                     <b>Trovato.</b>
-                    <p>Ti posizioniamo al top su Google e Maps con foto reali, orari aggiornati e contatto diretto via WhatsApp.</p>
+                    <p>Visibile subito su Google e Maps con foto ad alta risoluzione, orari di apertura e collegamento WhatsApp immediato.</p>
                 </div>
                 <div class="step-block" data-index="1">
-                    <span>02 · Sito su Misura</span>
+                    <span>02 · Showroom Digitale</span>
                     <b>Scelto.</b>
-                    <p>Un sito veloce, elegante e ottimizzato per smartphone per mostrare subito le auto disponibili e i prezzi chiari.</p>
+                    <p>Naviga le schede dettagliate con prestazioni, chilometraggio certificato e opzioni di finanziamento chiare prima di entrare in sede.</p>
                 </div>
                 <div class="step-block" data-index="2">
-                    <span>03 · Social & Reel</span>
+                    <span>03 · Esperienza Social</span>
                     <b>Ricordato.</b>
-                    <p>Campagne social e reel dedicati per far rimanere il tuo parco auto impresso nella mente di chi cerca l'auto nuova.</p>
+                    <p>Video promozionali, reel dei nuovi arrivi e foto in alta definizione per mostrare ogni singolo dettaglio del tuo prossimo veicolo.</p>
                 </div>
             </div>
 
-            <!-- Mockup del telefono con scorrimento interno sincronizzato -->
+            <!-- SMARTPHONE INTERATTIVO CON CONTENT SCROLL -->
             <div class="phone-mockup-frame">
                 <div class="phone-inner-screen">
                     <div class="phone-screen-content" id="phoneContent">
-                        <!-- Immagine 1: Google / Maps -->
-                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=600&q=80" alt="Google Preview">
-                        <!-- Immagine 2: Sito Web Mobile -->
-                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=600&q=80" alt="Sito Web Preview">
-                        <!-- Immagine 3: Instagram / Social -->
-                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80" alt="Social Preview">
+                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=600&q=80" alt="Google Map Preview">
+                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=600&q=80" alt="Sito Web Showroom">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80" alt="Social Post Preview">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- GALLERY / SHOWROOM -->
-    <section id="gallery" style="background: rgba(255,255,255,0.01);">
+    <!-- SHOWROOM GALLERY -->
+    <section id="gallery">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
+            <div class="section-header reveal-text">
                 <span class="section-tag">Parco Auto</span>
-                <h2 class="section-title">Ultime Arrivate in Gallery</h2>
+                <h2 class="section-title">Ultime Arrivate in <em>Gallery</em></h2>
             </div>
 
             <div class="showroom-grid">
                 <!-- CAR 1 -->
-                <div class="car-card" data-aos="fade-up">
+                <div class="car-card reveal-text">
                     <div class="car-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Sportiva">
+                        <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Porsche">
                         <div class="car-badge">Disponibile</div>
                     </div>
                     <div class="car-details">
@@ -889,9 +928,9 @@
                 </div>
 
                 <!-- CAR 2 -->
-                <div class="car-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="car-card reveal-text">
                     <div class="car-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Supercar">
+                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Lamborghini">
                         <div class="car-badge">In Arrivo</div>
                     </div>
                     <div class="car-details">
@@ -911,7 +950,7 @@
                 </div>
 
                 <!-- CAR 3 -->
-                <div class="car-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="car-card reveal-text">
                     <div class="car-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Audi RS">
                         <div class="car-badge">Disponibile</div>
@@ -938,25 +977,25 @@
     <!-- SERVIZI -->
     <section id="servizi">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
+            <div class="section-header reveal-text">
                 <span class="section-tag">Cosa Facciamo</span>
-                <h2 class="section-title">I Nostri Servizi</h2>
+                <h2 class="section-title">I Nostri Servizi <em>Su Misura</em></h2>
             </div>
 
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up">
+                <div class="service-card reveal-text">
                     <div class="service-icon"><i class="fa-solid fa-car"></i></div>
                     <h3>Vendita Auto Usate e Nuove</h3>
                     <p>Ampia scelta di vetture multimarca controllate, certificate e garantite per ogni esigenza di guida.</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card reveal-text">
                     <div class="service-icon"><i class="fa-solid fa-key"></i></div>
-                    <h3>Noleggio a Lungo e Breve Termine</h3>
+                    <h3>Noleggio Lungo e Breve Termine</h3>
                     <p>Soluzioni flessibili di noleggio auto per privati e aziende con formule all-inclusive senza pensieri.</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card reveal-text">
                     <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
                     <h3>Finanziamenti in Sede</h3>
                     <p>Piani di finanziamento personalizzati e tassi agevolati con pratiche approvate in tempi rapidi.</p>
@@ -966,16 +1005,15 @@
     </section>
 
     <!-- DOVE SIAMO & CONTATTI -->
-    <section id="contatti" style="background: rgba(255,255,255,0.01);">
+    <section id="contatti">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
+            <div class="section-header reveal-text">
                 <span class="section-tag">Vienici a Trovare</span>
-                <h2 class="section-title">Dove Siamo & Orari</h2>
+                <h2 class="section-title">Dove Siamo & <em>Orari</em></h2>
             </div>
 
             <div class="info-grid">
-                <!-- ORARI E INDIRIZZO -->
-                <div class="info-card" data-aos="fade-up">
+                <div class="info-card reveal-text">
                     <div class="info-header">
                         <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div>
@@ -991,7 +1029,7 @@
                     </ul>
 
                     <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-glass);">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
                             <i class="fa-solid fa-phone" style="color: #25D366;"></i>
                             <a href="tel:3444875970" style="color: #FFF; text-decoration: none; font-weight: 600;">344 487 5970</a> / 
                             <a href="tel:3500414682" style="color: #FFF; text-decoration: none; font-weight: 600;">350 041 4682</a>
@@ -999,8 +1037,7 @@
                     </div>
                 </div>
 
-                <!-- MAPPA -->
-                <div class="map-container" data-aos="fade-up">
+                <div class="map-container reveal-text">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.1873130541786!2d14.498!3d40.752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133ba50c3a000001%3A0x0!2sVia%20Tre%20Ponti%2C%20153%2C%2080045%20Pompei%20NA!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
@@ -1040,16 +1077,93 @@
         </div>
     </footer>
 
-    <!-- AOS Script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- JAVASCRIPT ANIMAZIONI & INTERAZIONI -->
     <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            disable: 'mobile'
+        // 1. ANIMAZIONE CANVAS SFONDO HERO (PARTICELLE AMBIENTALI)
+        const canvas = document.getElementById('heroCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.8 + 0.2;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 45; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // 2. TEXT REVEAL CON INTERSECTION OBSERVER
+        const revealElements = document.querySelectorAll('.reveal-text');
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 3. ZOOM/SCALE HERO CONTENT ON SCROLL
+        const heroContent = document.getElementById('heroContent');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            if (scrolled < 800) {
+                const scale = 1 + scrolled * 0.0003;
+                const opacity = 1 - scrolled * 0.0012;
+                heroContent.style.transform = `scale(${scale})`;
+                heroContent.style.opacity = Math.max(0, opacity);
+            }
         });
 
-        // Script dedicato per sincronizzare lo scorrimento del telefono e dei blocchi di testo
+        // 4. SCROLLYTELLING TELEFONO INTERATTIVO (VENIELLO SYNC)
         window.addEventListener('scroll', () => {
             const section = document.querySelector('.scroll-phone-section');
             const screenContent = document.getElementById('phoneContent');
@@ -1060,17 +1174,14 @@
             const rect = section.getBoundingClientRect();
             const totalScroll = section.clientHeight - window.innerHeight;
             
-            // Calcolo del progresso dello scroll (da 0 a 1) all'interno della sezione
             let progress = -rect.top / totalScroll;
             progress = Math.max(0, Math.min(1, progress));
 
-            // Spostamento verticale dell'immagine dentro il telefono (adatta in base all'altezza delle immagini)
             const maxTranslate = screenContent.scrollHeight - screenContent.parentElement.clientHeight;
             if (maxTranslate > 0) {
                 screenContent.style.transform = `translateY(${progress * -maxTranslate}px)`;
             }
 
-            // Attivazione dei passaggi testuali in base alla percentuale raggiunta
             let activeIndex = 0;
             if (progress >= 0.66) {
                 activeIndex = 2;
@@ -1087,6 +1198,5 @@
             });
         });
     </script>
-
 </body>
 </html>
